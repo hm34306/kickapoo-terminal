@@ -46,7 +46,7 @@ Colors has srtatic classes for
 
 - FontColor
 - BackgroundColor
-- FontFotmat
+- FontFormat
 
 
 ## Examples

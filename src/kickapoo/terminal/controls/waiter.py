@@ -1,5 +1,4 @@
 import os
-
 from kickapoo.terminal.colors import BackgroundColor, FontColor, TerminalColor
 
 

@@ -1,51 +1,80 @@
-from typing import TypeVar
-
-TerminalColor = TypeVar('TerminalColor')
-
-class _ResetFont():
-    RESET: TerminalColor = '\033[0m'
-
-class FontColor(_ResetFont):
-    YELLOW: TerminalColor = '\033[91m'
-    GREEN: TerminalColor = '\033[92m'
-    RED: TerminalColor = '\033[93m'
-    BLUE: TerminalColor = '\033[94m'
-    MAGENTA: TerminalColor = '\033[95m'
-    CYAN: TerminalColor = '\033[96m'
-    RESET: TerminalColor = '\033[0m'
+import colorful as cf
+from enum import StrEnum
 
 
-class FontFotmat(_ResetFont):
-    BOLD: TerminalColor = '\033[1m'
-    FAINT: TerminalColor = '\033[2m'
-    ITALICS: TerminalColor = '\033[3m'
-    UNDERLINE: TerminalColor = '\033[4m'
+class ColorName(StrEnum):
+    RED = "red"
+    GREEN = "green"
+    YELLOW = "yellow"
+    BLUE = "blue"
+    MAGENTA = "magenta"
+    CYAN = "cyan"
+    RESET = "reset"
 
 
-class BackgroundColor(_ResetFont):
-    RED: TerminalColor = '\033[41m'
-    GREEN: TerminalColor = '\033[42m'
-    YELLOW: TerminalColor = '\033[43m'
-    BLUE: TerminalColor = '\033[44m'
-    MAGENTA: TerminalColor = '\033[45m'
-    CYAN: TerminalColor= '\033[46m'
+class FontFormat(StrEnum):
+    # Raw ANSI codes for terminals that support them
+    BOLD = '\033[1m'
+    FAINT = '\033[2m'
+    ITALICS = '\033[3m'
+    UNDERLINE = '\033[4m'
+    RESET = '\033[0m'
 
 
-def green(msg: str) -> str:
-    return f"C{FontColor.GREEN}{msg}{FontColor.RESET}"
+class Themes(StrEnum):
+    DEFAULT = "Default"
+    SOLARIZED_DARK = "solarized"
+    MONOKAI = "monokai"
 
 
-def yellow(msg: str) -> str:
-    return f"C{FontColor.YELLOW}{msg}{FontColor.RESET}"
+class FontFormat(StrEnum):
+    # Raw ANSI codes for terminals that support them
+    BOLD = '\033[1m'
+    FAINT = '\033[2m'
+    ITALICS = '\033[3m'
+    UNDERLINE = '\033[4m'
+    RESET = '\033[0m'
 
 
-def red(msg: str) -> str:
-    return f"C{FontColor.RED}{msg}{FontColor.RESET}"
+# Create theme management functions
+def set_theme(theme_name):
+    """Set a color theme by name"""
+    try:
+        print(theme_name)
+        cf.use_style(theme_name)
+        return True
+    except ValueError:
+        #print(f"Theme '{theme_name}' not found. Using default.")
+        return False
 
+def get_available_themes():
+    """Returns a list of available themes"""
+    return list(cf.styles.keys())
 
-def cyan(msg: str) -> str:
-    return f"C{FontColor.CYAN}{msg}{FontColor.RESET}"
+# Convenience functions for colored text
+def red(text):
+    return cf.red(text)
 
+def green(text):
+    return cf.green(text)
 
-def magenta(msg: str) -> str:
-    return f"C{FontColor.CYAN}{msg}{FontColor.RESET}"
+def yellow(text):
+    return cf.yellow(text)
+
+def blue(text):
+    return cf.blue(text)
+
+def magenta(text):
+    return cf.magenta(text)
+
+def cyan(text):
+    return cf.cyan(text)
+
+def bold(text):
+    return f"{FontFormat.BOLD}{text}{FontFormat.RESET}"
+
+def italic(text):
+    return f"{FontFormat.ITALICS}{text}{FontFormat.RESET}"
+
+def underline(text):
+    return f"{FontFormat.UNDERLINE}{text}{FontFormat.RESET}"
