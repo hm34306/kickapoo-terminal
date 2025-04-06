@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "kickapoo-terminal"
-version = "0.1"
+version = "0.1.1"
 dependencies = []
 
 [project.optional-dependencies]
