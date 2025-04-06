@@ -58,6 +58,48 @@ python -m kickapoo.terminal.controls.spinner
 python -m kickapoo.terminal.controls.waiter
 ```
 
+### TerminalProgressBar
+
+```python
+t_spinner = TerminalProgressBar(
+    frames=10000, 
+    message_color=FontColor.GREEN, 
+    symbol_color=FontColor.CYAN)
+counter = 1
+for i in range(1000000):
+    t_spinner.render("TerminalProgressBar Demo", counter, total)
+    counter += 1
+t_spinner.exit()
+print("Complete")
+```
+
+### TerminalSpinner
+
+```python
+t_symbol = TerminalSpinner(
+    frames=10000, 
+    message_color=FontColor.GREEN, 
+    symbol_color=FontColor.CYAN)
+for i in range(1000000):
+    t_symbol.render("TerminalSpinner BASIC & Color Demo")
+t_symbol.exit()
+print("Complete")
+```
+
+### TerminalSymbolWaiter
+
+```python
+t_spinner = TerminalSymbolWaiter(
+    frames=10000, 
+    message_color=FontColor.GREEN, 
+    symbol_color=FontColor.CYAN)
+for i in range(1000000):
+    t_spinner.render("TerminalSymbolWaiter [Green and Cyan Text] Demo")
+t_spinner.exit()
+print("Complete")
+```
+
+
 ### TerminalProgressBar Demo
 
 ![image](images/kickapoo.terminal.contols.progress.output.png)
