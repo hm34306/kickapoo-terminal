@@ -1,16 +1,24 @@
-from typing import List
+from typing import ClassVar, List
+
 from kickapoo.terminal.colors import FontColor, TerminalColor
 
 
 class SpinnerType:
-    BASIC = [ "\\", "|", "/", "-", "\\", "|", "/", "*"]
-    DOTS = [ ".", "..", "...", "....", ".....", "......"]
-    SPECIAL = [ "!", "@", "#", "$", "%", "^", "&", "-", "+"]
+    BASIC: ClassVar[List[str]] = [ "\\", "|", "/", "-", "\\", "|", "/", "*"]
+    DOTS: ClassVar[List[str]] = [ ".", "..", "...", "....", ".....", "......"]
+    SPECIAL: ClassVar[List[str]] = [ "!", "@", "#", "$", "%", "^", "&", "-", "+"]
 
 
 class TerminalSpinner():
 
-    def __init__(self, spinner_list: List[str]=SpinnerType.BASIC, prefix: str="", suffix: str="", frames: int=2, message_color: TerminalColor=None, symbol_color: TerminalColor=None):
+    def __init__(
+            self, 
+            spinner_list: List[str]=SpinnerType.BASIC, 
+            prefix: str="", 
+            suffix: str="", 
+            frames: int=2, 
+            message_color: TerminalColor=None, 
+            symbol_color: TerminalColor=None) -> None:
         self._symbol = None
         self._symbol_list = spinner_list
         self._frames = frames
@@ -51,26 +59,29 @@ class TerminalSpinner():
 if __name__ == "__main__":
     t_symbol = TerminalSpinner(frames=10000)
     for i in range(1000000):
-        t_symbol.print("Spinner BASIC Demo")
+        t_symbol.render("TerminalSpinner BASIC Demo")
     t_symbol.exit()
     print("Complete")
 
-    t_symbol = TerminalSpinner(frames=10000, message_color=FontColor.GREEN, symbol_color=FontColor.CYAN)
+    t_symbol = TerminalSpinner(
+        frames=10000, 
+        message_color=FontColor.GREEN, 
+        symbol_color=FontColor.CYAN)
     for i in range(1000000):
-        t_symbol.print("Spinner BASIC Demo")
+        t_symbol.render("TerminalSpinner BASIC & Color Demo")
     t_symbol.exit()
     print("Complete")
 
     t_symbol = TerminalSpinner(spinner_list=SpinnerType.DOTS,frames=10000)
     print("Spinner Demo: ")
     for i in range(1000000):
-        t_symbol.print("Spinner DOTS Demo")
+        t_symbol.render("TerminalSpinner DOTS Demo")
     t_symbol.exit()
     print("Complete")
 
     t_symbol = TerminalSpinner(spinner_list=SpinnerType.SPECIAL,frames=100000)
     print("Spinner Test")
     for i in range(1000000):
-        t_symbol.print("Spinner SPECIAL Demo")
+        t_symbol.render("TerminalSpinner SPECIAL Demo")
     t_symbol.exit()
     print("Complete")

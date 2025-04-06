@@ -1,6 +1,5 @@
 from typing import TypeVar
 
-
 TerminalColor = TypeVar('TerminalColor')
 
 class _ResetFont():
@@ -32,21 +31,21 @@ class BackgroundColor(_ResetFont):
     CYAN: TerminalColor= '\033[46m'
 
 
-def green(msg):
+def green(msg: str) -> str:
     return f"C{FontColor.GREEN}{msg}{FontColor.RESET}"
 
 
-def yellow(msg):
+def yellow(msg: str) -> str:
     return f"C{FontColor.YELLOW}{msg}{FontColor.RESET}"
 
 
-def red(msg):
+def red(msg: str) -> str:
     return f"C{FontColor.RED}{msg}{FontColor.RESET}"
 
 
-def cyan(msg):
+def cyan(msg: str) -> str:
     return f"C{FontColor.CYAN}{msg}{FontColor.RESET}"
 
 
-def magenta(msg):
+def magenta(msg: str) -> str:
     return f"C{FontColor.CYAN}{msg}{FontColor.RESET}"

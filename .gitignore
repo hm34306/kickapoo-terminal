@@ -116,3 +116,5 @@ local.*
 
 # Test Results
 pytest-results.xml
+
+.python-version 
