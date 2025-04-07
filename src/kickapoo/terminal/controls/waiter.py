@@ -1,8 +1,6 @@
 import os
-
 import colorful as cf
 from colorful.core import Colorful
-
 from kickapoo.terminal.colors import FontFormat
 
 
