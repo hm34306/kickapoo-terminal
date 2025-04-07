@@ -1,6 +1,5 @@
 from enum import StrEnum
 from typing import List
-
 import colorful as cf
 
 
