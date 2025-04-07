@@ -11,7 +11,23 @@ It is quite possible that I have some kickapoo blood in me. I'm aot an oficial r
 ## Installation
 
 ```bash
-pip install kickappo-termial
+pip install "https://github.com/hm34306/kickapoo-terminal.git@0.2.0"
+```
+
+In pyproject.toml:
+```toml
+dependencies = [
+  "kickapoo-terminal @ git+https://github.com/hm34306/kickapoo-terminal.git@0.2.0",
+]
+```
+
+## Demo
+
+A demo canm be ran if the source is pulled. The demo uses TerminalStoreTeller and runs a few code examples.
+
+```bash
+cd src
+./demo.py
 ```
 
 ## Controls
