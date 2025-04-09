@@ -3,6 +3,7 @@ from typing import List
 import colorful as cf
 
 
+
 class ColorName(StrEnum):
     RED = "red"
     GREEN = "green"
