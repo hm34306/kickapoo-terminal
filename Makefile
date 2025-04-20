@@ -1,10 +1,10 @@
 .PHONY: pi-lint
 pi-lint:
-	pip install ".[lint]"
+	uv pip install ".[lint]"
 
 .PHONY: pi
 pi: pi-lint
-	pip install .
+	uv pip install .
 
 .PHONY: lint
 lint: check
