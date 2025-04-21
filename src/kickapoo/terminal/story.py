@@ -99,7 +99,7 @@ if __name__ == "__main__":
     # print(type(cf.red), cf.red)
     # raise SystemError
 
-    story = TerminalStoryTeller(writing_speed=100, theme=Themes.SOLARIZED_DARK)
+    story = TerminalStoryTeller(writing_speed=98, theme=Themes.SOLARIZED_DARK)
     story.header1("Chapter 1")
     story.paragraph(
         "The vibrant city of Los Angeles, California, is a melting pot of cultures, offering a diverse array of experiences. From the iconic Hollywood Walk of Fame to the stunning beaches of Santa Monica, there's something for everyone. Exploring the city's many neighborhoods, like the trendy shops of Abbot Kinney Boulevard or the art galleries of the Arts District, reveals a unique and dynamic atmosphere."  # noqa
@@ -115,15 +115,12 @@ reveals a unique and dynamic atmosphere."""  # noqa
     story.paragraph(lines)
 
     story.header3("Chapter 3 - Bullet List")
-    print(lines.split("\n"))
     story.list_writer(lines.split("\n"))
 
     story.header3("Chapter 4 - Number List")
-    print(lines.split("\n"))
     story.list_writer(lines.split("\n"), symbol=ListSymbol.NUMBERS)
 
     story.header3("Chapter 5 - Letter List")
-    print(lines.split("\n"))
     story.list_writer(lines.split("\n"), symbol=ListSymbol.LETTERS)
 
     code_example = """

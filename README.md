@@ -11,13 +11,13 @@ It is quite possible that I have some kickapoo blood in me. I'm aot an oficial r
 ## Installation
 
 ```bash
-pip install "https://github.com/hm34306/kickapoo-terminal.git@0.2.0"
+pip install "https://github.com/hm34306/kickapoo-terminal.git@0.2.3"
 ```
 
 In pyproject.toml:
 ```toml
 dependencies = [
-  "kickapoo-terminal @ git+https://github.com/hm34306/kickapoo-terminal.git@0.2.0",
+  "kickapoo-terminal @ git+https://github.com/hm34306/kickapoo-terminal.git@0.2.3",
 ]
 ```
 
