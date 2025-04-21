@@ -1,1 +1,1 @@
-import colorful as colors
+import colorful as color
