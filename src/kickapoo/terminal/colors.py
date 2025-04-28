@@ -5,6 +5,7 @@ import colorful as cf
 
 
 class ColorName(StrEnum):
+    GREY = "\x1b[38;21m"
     RED = "red"
     GREEN = "green"
     YELLOW = "yellow"
@@ -16,6 +17,7 @@ class ColorName(StrEnum):
 
 class FontFormat(StrEnum):
     # Raw ANSI codes for terminals that support them
+    GREY = "\x1b[38;21m"
     BOLD = "\033[1m"
     FAINT = "\033[2m"
     ITALICS = "\033[3m"
