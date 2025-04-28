@@ -1,21 +1,28 @@
 import logging
-from kickapoo.terminal.colors import ColorName, FontFormat
+from kickapoo.terminal import color
+from kickapoo.terminal.colors import FontFormat
 
 
 class CustomFormatter(logging.Formatter):
-    grey: str = ColorName.GREY
-    yellow: str = ColorName.YELLOW
-    red: str = ColorName.RED
-    bold_red: str = FontFormat.BOLD + ColorName.RED
-    reset: str = ColorName.RESET
+    grey: color.Colorful.ColorfulStyle = color.grey
+    cyan: color.Colorful.ColorfulStyle = color.cyan
+    yellow: color.Colorful.ColorfulStyle = color.yellow
+    red: color.Colorful.ColorfulStyle = color.red
+    bold_red: color.Colorful.ColorfulStyle = color.bold_red
+    reset: color.Colorful.ColorfulStyle = color.reset
 
-    FORMATS = {
-        logging.DEBUG: grey  + "%(levelname)s - %(message)s" + reset,
-        logging.INFO: grey + "%(levelname)s - %(message)s" + reset,
-        logging.WARNING: yellow + "%(levelname)s - %(message)s" + reset,
-        logging.ERROR: red + "%(levelname)s - %(message)s" + reset,
-        logging.CRITICAL: bold_red + "%(levelname)s - %(message)s" + reset
-    }
+    def __init__(self, format: str) -> None:
+        self.msg_format = format
+
+    @property
+    def FORMATS(self):
+        return {
+            logging.DEBUG: color.format(f"{self.grey} {self.msg_format} {self.reset}"),
+            logging.INFO: color.format(f"{self.cyan} {self.msg_format} {self.reset}"),
+            logging.WARNING: color.format(f"{self.yellow} {self.msg_format} {self.reset}"),
+            logging.ERROR: color.format(f"{self.red} {self.msg_format} {self.reset}"),
+            logging.CRITICAL: color.format(f"{self.bold_red} {self.msg_format} {self.reset}"),
+        }
 
     def format(self, record: logging.LogRecord):
         log_fmt = self.FORMATS.get(record.levelno)
@@ -23,7 +30,7 @@ class CustomFormatter(logging.Formatter):
         return formatter.format(record)
     
 
-def get_logger(name: str, log_level: str=logging.INFO) -> logging.Logger :
+def get_logger(name: str, log_level: str=logging.INFO, msg_format="%(levelname)s - %(message)s") -> logging.Logger :
 
     logger = logging.getLogger(name)
     logger.setLevel(log_level)
@@ -31,7 +38,7 @@ def get_logger(name: str, log_level: str=logging.INFO) -> logging.Logger :
     ch = logging.StreamHandler()
     ch.setLevel(log_level)
 
-    ch.setFormatter(CustomFormatter())
+    ch.setFormatter(CustomFormatter(msg_format))
 
     logger.addHandler(ch)
 
